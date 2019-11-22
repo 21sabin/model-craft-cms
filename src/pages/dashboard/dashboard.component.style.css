@@ -1,0 +1,25 @@
+.content {
+}
+
+.sidebar {
+  float: left;
+  width: 320px;
+  background-color: blue;
+  height: 100vh;
+}
+
+.sidebar_content {
+  padding: 50px;
+}
+
+.sidebar-list {
+  margin-top: 300px;
+}
+
+.sidebar-list_item {
+  padding: 20px;
+}
+
+.sidebar-list_item_link {
+  color: white;
+}

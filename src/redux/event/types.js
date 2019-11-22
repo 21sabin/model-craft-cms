@@ -1,0 +1,11 @@
+export const CREATE_EVENT = "create_event";
+export const ERROR = "error";
+export const CREATE_EVENT_SUCCESS = "create_event_success";
+export const LOADING = "loading";
+export const RESET_ERROR = "reset_error";
+export const FETCH_EVENT_LIST = "event_list";
+export const UPDATE_EVENT_STATUS = "update_event_status";
+export const UPDATE_EVENT = "update_event";
+export const SET_UPDATE_EVENT = "set_update_event";
+export const RESET_EVENT_VALUE = "reset_event_value";
+export const SHOW_EVENT_MODAL = "show_event_modal";

@@ -1,0 +1,16 @@
+.sidebar-option_item {
+  color: white;
+  list-style: none;
+  font-family: sans-serif;
+}
+
+.sidebar-option {
+  padding: 20px;
+  text-align: center;
+}
+
+.admin-profile {
+  width: 100%;
+  height: 300px;
+  background-color: grey;
+}
