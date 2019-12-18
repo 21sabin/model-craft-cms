@@ -10,7 +10,7 @@ export const loading = () => ({
 
 export const loginFailed = error => ({
   type: LOGIN_ERROR,
-  payload: error
+  payload: 'Authentication Failed!'
 });
 
 export const signIn = (email, password, history) => {

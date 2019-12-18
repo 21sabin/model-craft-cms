@@ -6,14 +6,12 @@ import CreateEvent from "../../components/create-event/create-event.component";
 import EventList from "../../components/Event-list/event-list.component";
 import CreateEvents from "../../components/create-events/create-events.component";
 import EditEvent from "../../components/edit-event/edit-event.component";
+import Services from '../../components/services/services.component';
+
 const routes = [
   {
     path: "/dashboard/event",
     sidebar: () => <CreateEvents />
-  },
-  {
-    path: "/dashboard/services",
-    sidebar: () => <div>shoelaces!</div>
   },
   {
     path: "/dashboard/event-list",
@@ -22,6 +20,10 @@ const routes = [
   {
     path: "/dashboard/event/:id",
     sidebar: () => <EditEvent />
+  },
+  {
+    path: "/dashboard/services/",
+    sidebar: () => <Services />
   }
 ];
 
@@ -51,7 +53,7 @@ export default function Dashboard(props) {
             </li>
 
             <li className="sidebar-list_item">
-              <Link to="/dashboard/service" className="sidebar-list_item_link">
+              <Link to="/dashboard/services" className="sidebar-list_item_link">
                 Create Services
               </Link>
             </li>

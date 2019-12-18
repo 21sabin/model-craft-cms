@@ -13,6 +13,10 @@ class EventList extends React.Component {
   handleEventStatus = isActive => {
     console.log("isActive ***", isActive);
   };
+
+  handleFeaturedEvent = (id, featured) => {
+
+  }
   render() {
     const { events } = this.props;
     return (
@@ -27,10 +31,18 @@ class EventList extends React.Component {
               <th scope="col">Location</th>
               <th scope="col">Event Start Date</th>
               <th scope="col">Event End Date</th>
+              <th scope="col">Featured</th>
               <th scope="col">Status</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
+          {
+            events.length == 0 && (<div style={{ textAlign: 'center' }} >
+
+              <p>No record !</p>
+            </div>
+            )
+          }
           <tbody>
             {events.map((event, i) => {
               return (
@@ -41,6 +53,16 @@ class EventList extends React.Component {
                   <td>{event.location}</td>
                   <td>{event.startDate}</td>
                   <td>{event.endDate}</td>
+
+                  <td>
+                    {" "}
+                    <SwitchToogle
+                      handleChange={() =>
+                        this.handleFeaturedEvent(event.id, !event.featured)
+                      }
+                      checked={event.featured}
+                    />
+                  </td>
                   <td>
                     {" "}
                     <SwitchToogle
@@ -50,16 +72,6 @@ class EventList extends React.Component {
                       checked={event.isActive}
                     />
                   </td>
-                  {/* <td>
-                    {event.imagePath}
-                    <img
-                    src={
-                      "file:///home/novelty/programming/Freelancing%20project/Ecommerce-fintech-company/server/assests/images/event/1574307470539_1504263774.jpg"
-                    }
-                    alt="event image"
-                    style={{ width: 300, height: 300 }}
-                  />
-                  </td> */}
 
                   <td>
                     {/* <button className="btn btn-primary btn-sm">edit</button> */}
@@ -71,7 +83,7 @@ class EventList extends React.Component {
             })}
           </tbody>
         </table>
-      </div>
+      </div >
     );
   }
 }
