@@ -4,11 +4,12 @@ import { SignInContainer, Title } from "./login.component.style";
 import CustomeButton from "../common/CustomeButton.component";
 import { connect } from "react-redux";
 import { signIn } from "../../redux/auth/auth.action";
+import "../Authentication/logincomponent.css";
 
 const buttonStyle = {
   padding: 10,
-  margin: 10,
-  width: "100%"
+
+  width: "40%"
 };
 
 class Login extends Component {
@@ -35,9 +36,9 @@ class Login extends Component {
         <FormInput
           type="text"
           label="email"
-          name="email"
+          name="Email"
           handleChange={event => this.handleChange(event)}
-          placeholder="email"
+          placeholder="Email"
           className="form-control"
         />
         <FormInput
@@ -46,7 +47,7 @@ class Login extends Component {
           placeholder="password"
           handleChange={event => this.handleChange(event)}
           className="form-control"
-          name="password"
+          name="Password"
         />
         <CustomeButton
           className="btn btn-primary block"

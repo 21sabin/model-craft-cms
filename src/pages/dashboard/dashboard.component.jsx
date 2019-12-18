@@ -33,6 +33,10 @@ export default function Dashboard(props) {
     <div className="wrapper">
       <Router>
         <div className="sidebar">
+          <div className="admin-detail">
+              <span>Logged in as</span>
+              <p>Admin</p>
+          </div>
           <ul
             style={{ listStyleType: "none", padding: 0 }}
             className="sidebar-list"
@@ -61,7 +65,9 @@ export default function Dashboard(props) {
         </div>
         <div className="content">
           <Header />
-          <h1>Admin Dashboard</h1>
+
+          
+          <h1 className="section-title">Admin Dashboard</h1>
           {/* <img
             src={"http://localhost:5000/images/1574680459018_1504263774.jpg"}
             style={{ width: 400, height: 400 }}
