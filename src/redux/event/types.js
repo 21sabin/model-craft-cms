@@ -9,3 +9,4 @@ export const UPDATE_EVENT = "update_event";
 export const SET_UPDATE_EVENT = "set_update_event";
 export const RESET_EVENT_VALUE = "reset_event_value";
 export const SHOW_EVENT_MODAL = "show_event_modal";
+export const FETCH_EVENT_BYID = "fetch_event_byid";

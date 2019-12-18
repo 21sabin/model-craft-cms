@@ -3,21 +3,32 @@ import Header from "../../common/header/header.component";
 import "./dashboard.component.style.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CreateEvent from "../../components/create-event/create-event.component";
+import EventList from "../../components/Event-list/event-list.component";
+import CreateEvents from "../../components/create-events/create-events.component";
+import EditEvent from "../../components/edit-event/edit-event.component";
+import Services from '../../components/services/services.component';
 
 const routes = [
   {
     path: "/dashboard/event",
-    sidebar: () => <CreateEvent />,
-    main: () => <h2>Bubblegum</h2>
+    sidebar: () => <CreateEvents />
   },
   {
-    path: "/dashboard/services",
-    sidebar: () => <div>shoelaces!</div>,
-    main: () => <h2>Shoelaces</h2>
+    path: "/dashboard/event-list",
+    sidebar: () => <EventList />
+  },
+  {
+    path: "/dashboard/event/:id",
+    sidebar: () => <EditEvent />
+  },
+  {
+    path: "/dashboard/services/",
+    sidebar: () => <Services />
   }
 ];
 
-export default function Dashboard() {
+export default function Dashboard(props) {
+  console.log("props", props);
   return (
     <div className="wrapper">
       <Router>
@@ -31,8 +42,18 @@ export default function Dashboard() {
                 Create Event
               </Link>
             </li>
+
             <li className="sidebar-list_item">
-              <Link to="/dashboard/service" className="sidebar-list_item_link">
+              <Link
+                to="/dashboard/event-list"
+                className="sidebar-list_item_link"
+              >
+                Event List
+              </Link>
+            </li>
+
+            <li className="sidebar-list_item">
+              <Link to="/dashboard/services" className="sidebar-list_item_link">
                 Create Services
               </Link>
             </li>
@@ -42,10 +63,9 @@ export default function Dashboard() {
           <Header />
           <h1>Admin Dashboard</h1>
           {/* <img
-            src={
-              "home/novelty/programming/Freelancingproject/Ecommerce-fintech-company/server/assests/images/event/1574436662796_1504263774_9688244f7fa8d284ebe64d2ed3b8d064--anonymous-mask-lancaster.jpg"
-            }
+            src={"http://localhost:5000/images/1574680459018_1504263774.jpg"}
             style={{ width: 400, height: 400 }}
+            alt="image"
           /> */}
           <div className="sidebar_content">
             <Switch>
@@ -53,8 +73,8 @@ export default function Dashboard() {
                 <Route
                   key={index}
                   path={route.path}
-                  exact={route.exact}
-                  children={<route.sidebar />}
+                  exact={true}
+                  children={<route.sidebar {...props} />}
                 />
               ))}
             </Switch>

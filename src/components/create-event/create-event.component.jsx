@@ -71,8 +71,10 @@ class CreateEvent extends Component {
     );
   };
   componentWillReceiveProps(nextProps) {
+    console.log("this.props", this.props.isEventModalOpen);
+    console.log("this.nexProps", nextProps);
     if (this.props.isEventModalOpen !== nextProps.isEventModalOpen) {
-      this.setState({ isModalOpen: nextProps.isEventModalOpen });
+      this.setState({ modelIsOpen: nextProps.isEventModalOpen });
     }
   }
 
@@ -84,7 +86,7 @@ class CreateEvent extends Component {
   openModal = () => {
     console.log("modal open", this);
     this.setState({ modelIsOpen: true, form_name: "Create Event" }, () => {
-      console.log(this.state);
+      // this.props.resetEventValue();
     });
   };
 
@@ -95,10 +97,10 @@ class CreateEvent extends Component {
   };
 
   handleModal = () => {
-    // this.props.showEventModal();
-    this.setState({ modelIsOpen: true }, () => {
-      console.log("this.state", this.state);
-    });
+    this.props.showEventModal();
+    // this.setState({ modelIsOpen: true }, () => {
+    //   console.log("this.state", this.state);
+    // });
   };
 
   render() {
@@ -222,17 +224,26 @@ class CreateEvent extends Component {
                       formData.append("startDate", value.startDate);
                       formData.append("endDate", value.endDate);
                       formData.append("location", value.location);
+                      formData.append("_id", 0);
 
                       this.props.create_event(formData);
                     } else {
+                      console.log("update ", value);
+                      console.log("file update", this.state.event_file);
                       const formData = new FormData();
-                      formData.append("file", this.state.event_file);
+                      if (this.state.event_file) {
+                        formData.append("file", this.state.event_file);
+                      } else {
+                        formData.append("imagePath", value.imagePath);
+                      }
+
                       formData.append("title", value.title);
                       formData.append("description", value.description);
                       formData.append("startDate", value.startDate);
                       formData.append("endDate", value.endDate);
                       formData.append("location", value.location);
                       formData.append("_id", value._id);
+                      console.log("formdata", formData);
 
                       this.props.create_event(formData);
                     }
@@ -286,7 +297,7 @@ const mapStateToProps = state => {
   console.log("state", state);
   return {
     eventList: state.eventReducer.events,
-    isModalOpen: state.eventReducer.isEventModalOpen,
+    isEventModalOpen: state.eventReducer.isEventModalOpen,
     imagePath: state.eventReducer.event,
     initialValues: state.eventReducer.event
       ? { ...state.eventReducer.event }
